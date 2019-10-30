@@ -3,8 +3,7 @@
 
 #define BLOCKSIZE 256
 
-_global_ void polynomial_expansion(float *poly, int degree,
-                                   int n, float *array)
+__global__ void polynomial_expansion(float *poly, int degree, int n, float *array)
 {
     //TODO: Write code to use the GPU here!
     //code should write the output back to array
