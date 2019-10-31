@@ -14,7 +14,6 @@ int main(int argc, char *argv[])
     int nbiter = atoi(argv[2]);
 
     float *array = new float[n];
-    float *poly = new float[degree + 1];
     for (int i = 0; i < n; ++i)
         array[i] = 1.;
 
