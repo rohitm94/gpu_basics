@@ -32,11 +32,9 @@ int main(int argc, char *argv[])
 
     cudaFree(d_array);
 
-    std::cout << "Latency of "<< nbiter <<"times is" << totaltime.count() << std::endl;
-    std::cout << "Latency of PCI express is" << totaltime.count() / nbiter << std::endl;
+    std::cout << n*sizeof(float) <<" "<< n*sizeof(float)/(totaltime.count()*nbiter) << std::endl;
 
     delete[] array;
-    delete[] poly;
 
     return 0;
 }
