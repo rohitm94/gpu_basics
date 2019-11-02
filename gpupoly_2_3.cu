@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 
     cudaDeviceSynchronize();
     end = std::chrono::system_clock::now();
-    std::chrono::duration<double> totaltime = (end - begin);
+    std::chrono::duration<double> totaltime = (end - begin) / nbiter;
     cudaMemcpy(array, d_array, n * sizeof(float), cudaMemcpyDeviceToHost);
 
     cudaFree(d_array);
