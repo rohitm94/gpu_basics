@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
     }
 
     std::cerr << array[0] << std::endl;
-    std::cout << n << " " << degree << " " << ((n+degree)*sizeof(float)*nbiter)/totaltime.count() << std::endl;
+    std::cout << n << " " << degree << " " << ((n+degree+1)*sizeof(float)*nbiter)/totaltime.count() << std::endl;
 
     delete[] array;
     delete[] poly;
