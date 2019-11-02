@@ -3,6 +3,8 @@
 
 int main(int argc, char *argv[])
 {
+
+
     int n = atoi(argv[1]); //TODO: atoi is an unsafe function
     int nbiter = atoi(argv[2]);
 
