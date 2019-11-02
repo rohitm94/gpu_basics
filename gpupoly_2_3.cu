@@ -59,14 +59,14 @@ int main(int argc, char *argv[])
 
     cudaDeviceSynchronize();
     end = std::chrono::system_clock::now();
-    std::chrono::duration<double> totaltime = (end - begin) / nbiter;
+    std::chrono::duration<double> totaltime = (end - begin);
     cudaMemcpy(array, d_array, n * sizeof(float), cudaMemcpyDeviceToHost);
 
     cudaFree(d_array);
     cudaFree(d_poly);
 
     std::cerr << array[0] << std::endl;
-    std::cout << n << " " << degree << " " << (n*sizeof(float)*nbiter)/(totaltime.count()) << std::endl;
+    std::cout << n << " " << degree << " " << ((n+degree)*sizeof(float)*nbiter)/(totaltime.count()) << std::endl;
 
     delete[] array;
     delete[] poly;
