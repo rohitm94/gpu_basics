@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 
     int n = atoi(argv[1]); //TODO: atoi is an unsafe function
     int degree = atoi(argv[2]);
-    int nbiter = 1;
+    int nbiter = 10;
 
     float *array = new float[n];
     float *poly = new float[degree + 1];
@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 
     cudaDeviceSynchronize();
     end = std::chrono::system_clock::now();
-    std::chrono::duration<double> totaltime = (end - begin) / nbiter;
+    std::chrono::duration<double> totaltime = (end - begin);
     cudaMemcpy(array, d_array, n * sizeof(float), cudaMemcpyDeviceToHost);
 
     cudaFree(d_array);
