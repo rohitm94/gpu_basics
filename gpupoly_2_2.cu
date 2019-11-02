@@ -3,20 +3,12 @@
 
 int main(int argc, char *argv[])
 {
-
-    if (argc < 3)
-    {
-        std::cerr << "usage: " << argv[0] << " n degree" << std::endl;
-        return -1;
-    }
-
     int n = atoi(argv[1]); //TODO: atoi is an unsafe function
     int nbiter = atoi(argv[2]);
 
     float *array = new float[n];
-    for (int i = 0; i < n; ++i)
+    for(int i = 0; i < n; ++i)
         array[i] = 1.;
-
     float *d_array;
 
     cudaMalloc((void **)&d_array, n * sizeof(float));
@@ -24,7 +16,7 @@ int main(int argc, char *argv[])
     std::chrono::time_point<std::chrono::system_clock> begin, end;
     begin = std::chrono::system_clock::now();
 
-    for (int iter = 0; iter < nbiter; ++iter)
+    for(int iter = 0; iter < nbiter; ++iter)
         cudaMemcpy(d_array, array, n * sizeof(float), cudaMemcpyHostToDevice);
 
     end = std::chrono::system_clock::now();
@@ -32,7 +24,7 @@ int main(int argc, char *argv[])
 
     cudaFree(d_array);
 
-    std::cout << n*sizeof(float) <<" "<< n*sizeof(float)/(totaltime.count()*nbiter) << std::endl;
+    std::cout << n*sizeof(float)/1000 <<" "<< (n*sizeof(float))/(totaltime.count()*nbiter) << std::endl;
 
     delete[] array;
 
