@@ -65,23 +65,6 @@ int main(int argc, char *argv[])
     cudaFree(d_array);
     cudaFree(d_poly);
 
-
-    {
-        bool check = true;
-        int index;
-        for (int i = 0; i < n; ++i)
-        {
-            if (fabs(array[i] - (degree + 1)) > 0.01)
-            {
-                check = false;
-                index = i;
-				break;
-            }
-        }
-        if (!check)
-            std::cerr << "Polynomial expansion has corrupted at array[" << index << "]" << std::endl;
-    }
-
     std::cerr << array[0] << std::endl;
     std::cout << n << " " << degree << " " << (n*sizeof(float)*nbiter)/(totaltime.count()) << std::endl;
 
